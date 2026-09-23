@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Mi Rincón de Lecturas 📚</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Georgia,serif;background:#fff7fb;color:#4b3542}
+*{box-sizing:border-box}body{margin:0;font-family:'Trebuchet MS',Arial,sans-serif;background:#fff7fb;color:#4b3542}
 header{padding:34px 20px;text-align:center;background:linear-gradient(135deg,#f7d8e8,#eadcf8)}
 h1{margin:0;font-size:2.2rem}.sub{margin:8px 0 0;color:#765b69}
 nav{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:18px}
@@ -19,7 +19,9 @@ input,select,textarea{width:100%;padding:11px;border:1px solid #e4cbd8;border-ra
 .card{background:white;border-radius:20px;padding:15px;box-shadow:0 5px 18px #9b71801c;border:1px solid #f0dce6;cursor:pointer;transition:transform .18s,box-shadow .18s}
 .card:hover{transform:translateY(-3px);box-shadow:0 8px 24px #9b71802b}
 .cover{height:360px;aspect-ratio:2/3;width:100%;max-width:240px;margin:0 auto 10px;border-radius:15px;background:#f1e4ec;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
-.cover img{width:100%;height:100%;object-fit:cover}.cover span{font-size:3rem}
+.cover img{width:100%;height:100%;object-fit:cover}.cover span{font-size:3rem}.cover-drop{border:2px dashed #e4cbd8;border-radius:16px;padding:22px 14px;text-align:center;background:#fff7fb;color:#765b69;cursor:pointer;transition:.18s}
+.cover-drop:hover,.cover-drop.dragover{background:#f8eaf2;border-color:#d99abc;transform:translateY(-1px)}
+.cover-drop-icon{font-size:2rem;margin-bottom:5px}.cover-drop small{display:block;margin-top:5px;color:#896f7d}
 .card-stars{text-align:center;font-size:1.05rem;letter-spacing:1px;margin:2px 0 4px}
 .title{font-size:1.25rem;font-weight:bold;margin-bottom:5px;text-align:center}.meta{font-size:.9rem;color:#806b76}
 .card .meta.author{text-align:center;margin-bottom:8px}
@@ -74,7 +76,14 @@ footer{text-align:center;color:#9a7d8b;font-size:.85rem;padding:20px}
 <h2 id="formTitle">Agregar lectura</h2>
 <div class="field"><label>Título</label><input id="title" placeholder="Ej. Mi novela favorita"></div>
 <div class="field"><label>Autor</label><input id="author" placeholder="Opcional"></div>
-<div class="field"><label>Portada</label><input id="coverFile" type="file" accept="image/*"><small>Elige una imagen desde tu galería 📱🖼️</small></div>
+<div class="field"><label>Portada</label>
+<div id="coverDrop" class="cover-drop" onclick="document.querySelector('#coverFile').click()">
+  <input id="coverFile" type="file" accept="image/*" hidden>
+  <div class="cover-drop-icon">🖼️</div>
+  <div><strong>Haz clic para elegir una portada</strong></div>
+  <small>O arrastra la imagen aquí</small>
+</div>
+</div>
 <div class="field"><label>Total de capítulos</label><input id="total" type="number" min="1" value="1"></div>
 <div class="field"><label>Capítulos leídos</label><input id="read" type="number" min="0" value="0"></div>
 <div class="field"><label>Enlace donde la lees</label><input id="url" placeholder="https://..."></div>
@@ -88,12 +97,24 @@ footer{text-align:center;color:#9a7d8b;font-size:.85rem;padding:20px}
 let books=JSON.parse(localStorage.getItem('myBooks')||'[]'),filter='all';
 const dlg=document.querySelector('#dlg');
 const detailDlg=document.querySelector('#detailDlg');
+const coverFile=document.querySelector('#coverFile');
+const coverDrop=document.querySelector('#coverDrop');
+['dragenter','dragover'].forEach(ev=>coverDrop.addEventListener(ev,e=>{e.preventDefault();coverDrop.classList.add('dragover')}));
+['dragleave','drop'].forEach(ev=>coverDrop.addEventListener(ev,e=>{e.preventDefault();coverDrop.classList.remove('dragover')}));
+coverDrop.addEventListener('drop',e=>{
+  const file=e.dataTransfer.files[0];
+  if(file && file.type.startsWith('image/')){
+    const dt=new DataTransfer(); dt.items.add(file); coverFile.files=dt.files;
+  }
+});
+coverFile.addEventListener('change',()=>{ if(coverFile.files[0]) coverDrop.querySelector('strong').textContent=coverFile.files[0].name; });
+
 function saveData(){localStorage.setItem('myBooks',JSON.stringify(books))}
 function openForm(id=null){
 document.querySelector('#formTitle').textContent=id?'Editar lectura':'Agregar lectura';
 let b=books.find(x=>x.id===id)||{title:'',author:'',cover:'',total:1,read:0,url:'',rating:'0',notes:''};
 for(let k of ['title','author','total','read','url','rating','notes']) document.querySelector('#'+k).value=b[k]??'';
-const f=document.querySelector('#coverFile'); f.value='';
+const f=document.querySelector('#coverFile'); f.value=''; document.querySelector('#coverDrop strong').textContent='Haz clic para elegir una portada';
 document.querySelector('#editId').value=id||''; dlg.showModal();
 }
 function save(){
