@@ -5,24 +5,52 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Mi Rincón de Lecturas 📚</title>
 <style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Georgia,"Times New Roman",serif;background:linear-gradient(180deg,#fff8fc 0%,#fff1f7 55%,#fdf7fb 100%);color:#4d3542;min-height:100vh}
-header{position:relative;overflow:hidden;padding:64px 20px 58px;text-align:center;background:linear-gradient(135deg,#f8cfe1 0%,#f4d8ea 45%,#e9dafa 100%);border-bottom:1px solid #f0c9dc;box-shadow:0 8px 30px #b76d8b20}
-header:before,header:after{content:"";position:absolute;border-radius:50%;background:#ffffff55;pointer-events:none}header:before{width:220px;height:220px;left:-70px;top:-100px}header:after{width:300px;height:300px;right:-120px;bottom:-180px}
-.hero-inner{position:relative;z-index:1;max-width:900px;margin:auto}.eyebrow{display:inline-block;margin-bottom:12px;padding:7px 15px;border-radius:999px;background:#fff8fcaa;color:#8d5870;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;font-family:Arial,sans-serif}.hero-title{margin:0;font-size:clamp(2.5rem,7vw,4.5rem);line-height:1.02;color:#653f54;text-shadow:0 2px 0 #ffffff66}.sub{margin:16px 0 0;color:#76576a;font-size:1.05rem}.hero-deco{margin-top:22px;font-size:1.35rem;letter-spacing:.35em;color:#a96984}
-nav{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:22px 18px 12px;position:sticky;top:0;z-index:5;background:#fff8fce8;backdrop-filter:blur(12px);border-bottom:1px solid #f1dce6}
-button{border:0;border-radius:999px;padding:11px 17px;background:#cf7fa3;color:white;font-weight:bold;cursor:pointer;transition:.2s transform,.2s box-shadow,.2s background;font-family:inherit}button:hover{transform:translateY(-2px);box-shadow:0 7px 16px #b9688928;background:#c56f96}button.secondary{background:#f3e0e9;color:#765368}button.secondary:hover{background:#ead0dc}
-main{max-width:1100px;margin:auto;padding:20px 18px 55px}.search{max-width:650px;margin:0 auto 22px}.search input{font-size:1rem;padding:14px 18px;box-shadow:0 6px 22px #a96f8520}
-input,select,textarea{width:100%;padding:12px 13px;border:1px solid #e7cbd8;border-radius:13px;background:#fff;color:#4d3542;font:inherit;outline:none}input:focus,select:focus,textarea:focus{border-color:#cf7fa3;box-shadow:0 0 0 3px #cf7fa320}
-#stats{margin:0 auto 20px;text-align:center}.stats-box{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.stat{background:#fff;border:1px solid #f0dbe5;border-radius:18px;padding:10px 15px;box-shadow:0 5px 18px #a96f8515;font-size:.9rem}.stat b{color:#b55f84;font-size:1.05rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:22px}.card{background:#fff;border-radius:24px;padding:14px;border:1px solid #f0dbe5;box-shadow:0 9px 28px #a96f8518;overflow:hidden;transition:.2s transform,.2s box-shadow}.card:hover{transform:translateY(-4px);box-shadow:0 14px 34px #a96f8525}
-.cover{height:360px;width:100%;border-radius:18px;background:linear-gradient(145deg,#f8e5ed,#eee2f5);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:14px;position:relative}.cover:after{content:"";position:absolute;inset:0;border:1px solid #ffffff55;border-radius:18px;pointer-events:none}.cover img{width:100%;height:100%;object-fit:cover;display:block}.cover span{font-size:4rem;opacity:.75}.title{font-size:1.3rem;font-weight:bold;margin-bottom:5px;color:#613f52}.meta{font-size:.9rem;color:#806b76}.progress{height:9px;background:#f1e4ea;border-radius:10px;overflow:hidden;margin:12px 0 7px}.bar{height:100%;background:linear-gradient(90deg,#d47fa5,#c79adf);border-radius:10px}.actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}.actions button{font-size:.78rem;padding:8px 11px}.empty{text-align:center;padding:55px 15px;color:#896f7d;background:#fff;border:1px dashed #e2bfd0;border-radius:22px}
-dialog{border:0;border-radius:26px;padding:0;width:min(540px,92%);max-height:90vh;box-shadow:0 25px 70px #4b354244}dialog::backdrop{background:#4b354266;backdrop-filter:blur(3px)}.modal{padding:25px}.close{float:right;background:#f2e8ed;color:#654c5a;padding:8px 12px}.modal h2{margin-top:0;color:#633f53}.field{margin:12px 0}.field label{display:block;margin-bottom:6px;font-size:.9rem;font-weight:bold}.field small{display:block;margin-top:5px;color:#927684}footer{text-align:center;color:#9a7d8b;font-size:.85rem;padding:24px}
-@media(max-width:600px){header{padding:50px 18px 44px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card{border-radius:19px;padding:10px}.cover{height:285px;border-radius:14px}.title{font-size:1.05rem}.actions button{font-size:.7rem;padding:7px 9px}nav{padding:14px 10px}.hero-deco{font-size:1rem}}
-@media(max-width:390px){.grid{grid-template-columns:1fr}.cover{height:390px}}
+*{box-sizing:border-box}body{margin:0;font-family:Georgia,serif;background:#fff7fb;color:#4b3542}
+header{padding:34px 20px;text-align:center;background:linear-gradient(135deg,#f7d8e8,#eadcf8)}
+h1{margin:0;font-size:2.2rem}.sub{margin:8px 0 0;color:#765b69}
+nav{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:18px}
+button{border:0;border-radius:18px;padding:10px 16px;background:#d99abc;color:white;font-weight:bold;cursor:pointer}
+button.secondary{background:#ead9e4;color:#654c5a}
+main{max-width:1000px;margin:auto;padding:10px 18px 50px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:20px}
+input,select,textarea{width:100%;padding:11px;border:1px solid #e4cbd8;border-radius:12px;background:#fff}
+.search{max-width:520px;margin:0 auto 22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:white;border-radius:20px;padding:15px;box-shadow:0 5px 18px #9b71801c;border:1px solid #f0dce6;cursor:pointer;transition:transform .18s,box-shadow .18s}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 24px #9b71802b}
+.cover{height:360px;aspect-ratio:2/3;width:100%;max-width:240px;margin:0 auto 10px;border-radius:15px;background:#f1e4ec;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.cover img{width:100%;height:100%;object-fit:cover}.cover span{font-size:3rem}
+.card-stars{text-align:center;font-size:1.05rem;letter-spacing:1px;margin:2px 0 4px}
+.title{font-size:1.25rem;font-weight:bold;margin-bottom:5px;text-align:center}.meta{font-size:.9rem;color:#806b76}
+.card .meta.author{text-align:center;margin-bottom:8px}
+.progress{height:9px;background:#f0e3ea;border-radius:10px;overflow:hidden;margin:10px 0 4px}.bar{height:100%;background:#d99abc}
+.card-progress-text{text-align:center;font-size:.82rem;color:#806b76;margin-bottom:2px}
+.actions{display:flex;gap:6px;flex-wrap:wrap}.actions button{font-size:.78rem;padding:8px 10px}
+.detail-cover{height:360px;aspect-ratio:2/3;width:100%;max-width:240px;margin:0 auto 14px;border-radius:16px;background:#f1e4ec;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.detail-cover img{width:100%;height:100%;object-fit:cover}.detail-cover span{font-size:4rem}
+.detail-stars{text-align:center;font-size:1.2rem;margin-bottom:8px}
+.detail-title{text-align:center;font-size:1.55rem;font-weight:bold;margin-bottom:4px}
+.detail-author{text-align:center;color:#806b76;margin-bottom:14px}
+.detail-info{background:#fff7fb;border-radius:14px;padding:12px;margin:12px 0}
+.chapter-box{text-align:center;background:#fff;border:1px solid #f0dce6;border-radius:16px;padding:14px;margin-top:12px}
+.rating-box{text-align:center;background:#fff;border:1px solid #f0dce6;border-radius:16px;padding:14px;margin-top:12px}
+.rating-stars{font-size:1.45rem;letter-spacing:2px;margin:7px 0}
+.rating-stars button{padding:7px 10px}
+.rating-stars button{padding:7px 10px}
+.chapter-box label{display:block;color:#806b76;font-size:.9rem;margin-bottom:7px}
+.chapter-row{display:flex;gap:8px;justify-content:center;align-items:center}
+.chapter-row input{max-width:120px;text-align:center;font-size:1.05rem}
+.chapter-row button{min-width:48px}
+.detail-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+.empty{text-align:center;padding:45px 15px;color:#896f7d}
+dialog{border:0;border-radius:22px;padding:0;width:min(520px,92%);box-shadow:0 20px 60px #0003}
+dialog::backdrop{background:#4b354266}.modal{padding:22px}.field{margin:11px 0}.field label{display:block;margin-bottom:5px;font-size:.9rem}
+.close{float:right;background:#eee;color:#654c5a}.modal h2{margin-top:0}
+footer{text-align:center;color:#9a7d8b;font-size:.85rem;padding:20px}
 </style>
 </head>
 <body>
-<header><div class="hero-inner"><div class="eyebrow">mi diario de lecturas</div><h1 class="hero-title">📚 Mi Rincón de Lecturas</h1><p class="sub">Mis libros, mis historias y mi progreso ✨</p><div class="hero-deco">♡ · 📖 · ♡</div></div></header>
+<header><h1>📚 Mi Rincón de Lecturas</h1><p class="sub">Mis libros, mis historias y mi progreso ✨</p></header>
 <nav>
 <button onclick="openForm()">＋ Agregar lectura</button>
 <button class="secondary" onclick="filter='all';render()">Todos</button>
@@ -35,6 +63,11 @@ dialog{border:0;border-radius:26px;padding:0;width:min(540px,92%);max-height:90v
 <div id="stats"></div><div id="grid" class="grid"></div>
 </main>
 <footer>Hecho para guardar tus lecturas 💗</footer>
+
+<dialog id="detailDlg"><div class="modal">
+<button class="close" onclick="detailDlg.close()">✕</button>
+<div id="detailContent"></div>
+</div></dialog>
 
 <dialog id="dlg"><div class="modal">
 <button class="close" onclick="dlg.close()">✕</button>
@@ -54,6 +87,7 @@ dialog{border:0;border-radius:26px;padding:0;width:min(540px,92%);max-height:90v
 <script>
 let books=JSON.parse(localStorage.getItem('myBooks')||'[]'),filter='all';
 const dlg=document.querySelector('#dlg');
+const detailDlg=document.querySelector('#detailDlg');
 function saveData(){localStorage.setItem('myBooks',JSON.stringify(books))}
 function openForm(id=null){
 document.querySelector('#formTitle').textContent=id?'Editar lectura':'Agregar lectura';
@@ -76,20 +110,77 @@ saveData();dlg.close();render();
 }
 }
 function status(b){if(b.read>=b.total)return'finished';if(b.read>0)return'reading';return'pending'}
+function showDetails(id){
+let b=books.find(x=>x.id===id); if(!b)return;
+let p=Math.round(b.read/b.total*100);
+document.querySelector('#detailContent').innerHTML=`
+<div class="detail-cover">${b.cover?`<img src="${esc(b.cover)}" onerror="this.style.display='none'">`:'<span>📖</span>'}</div>
+<div class="detail-stars">${b.rating&&b.rating!=='0'?b.rating:'☆ Sin calificar'}</div>
+<div class="detail-title">${esc(b.title)||'Sin título'}</div>
+<div class="detail-author">${esc(b.author)||'Autor no indicado'}</div>
+<div class="detail-info">
+<div class="progress"><div class="bar" style="width:${p}%"></div></div>
+<div class="meta" style="text-align:center">${b.read}/${b.total} capítulos · ${p}% de progreso</div>
+</div>
+<div class="chapter-box">
+<label>¿En qué capítulo vas?</label>
+<div class="chapter-row">
+<button onclick="changeChapter(${b.id},-1)">−</button>
+<input id="chapterInput" type="number" min="0" max="${b.total}" value="${b.read}" onchange="setChapter(${b.id},this.value)">
+<button onclick="changeChapter(${b.id},1)">+</button>
+</div>
+</div>
+<div class="rating-box">
+<div class="rating-stars">
+<button onclick="changeRating(${b.id},-1)">−</button>
+<span>${b.rating&&b.rating!=='0'?b.rating:'☆'}</span>
+<button onclick="changeRating(${b.id},1)">+</button>
+</div>
+</div>
+${b.notes?`<p><strong>Notas / reseña:</strong><br>${esc(b.notes)}</p>`:''}
+<div class="detail-actions">
+${b.url?`<button onclick="window.open('${esc(b.url)}','_blank')">🔗 Leer</button>`:''}
+<button onclick="detailDlg.close();openForm(${b.id})">✏️ Editar</button>
+<button onclick="detailDlg.close();del(${b.id})">🗑️ Eliminar</button>
+</div>`;
+detailDlg.showModal();
+}
+function setChapter(id,value){
+let b=books.find(x=>x.id===id); if(!b)return;
+b.read=Math.min(b.total,Math.max(0,Number(value)||0));
+saveData(); showDetails(id); render();
+}
+function changeChapter(id,amount){
+let b=books.find(x=>x.id===id); if(!b)return;
+b.read=Math.min(b.total,Math.max(0,b.read+amount));
+saveData(); showDetails(id); render();
+}
+
+function changeRating(id,amount){
+let b=books.find(x=>x.id===id); if(!b)return;
+let current=b.rating==='0'?0:String(b.rating).length;
+let next=Math.min(5,Math.max(0,current+amount));
+b.rating=next===0?'0':'⭐'.repeat(next);
+saveData(); showDetails(id); render();
+}
+
 function render(){
 let q=document.querySelector('#search').value.toLowerCase(), list=books.filter(b=>(filter==='all'||status(b)===filter)&&((b.title+b.author).toLowerCase().includes(q)));
-document.querySelector('#stats').innerHTML=`<div class="stats-box"><div class="stat">📚 <b>${books.length}</b> lecturas</div><div class="stat">📖 <b>${books.filter(b=>status(b)==='reading').length}</b> leyendo</div><div class="stat">✅ <b>${books.filter(b=>status(b)==='finished').length}</b> terminadas</div></div>`;
+document.querySelector('#stats').innerHTML=`<p style="text-align:center">📚 ${books.length} lecturas · ✅ ${books.filter(b=>status(b)==='finished').length} terminadas · 📖 ${books.filter(b=>status(b)==='reading').length} leyendo</p>`;
 document.querySelector('#grid').innerHTML=list.length?list.map(b=>{
 let p=Math.round(b.read/b.total*100);
-return `<article class="card"><div class="cover">${b.cover?`<img src="${esc(b.cover)}" onerror="this.style.display='none'">`:'<span>📖</span>'}</div>
-<div class="title">${esc(b.title)||'Sin título'}</div><div class="meta">${esc(b.author)||'Autor no indicado'}</div>
-<div class="progress"><div class="bar" style="width:${p}%"></div></div><div class="meta">${b.read}/${b.total} capítulos · ${p}%</div>
-<div>${b.rating&&b.rating!=='0'?b.rating:'☆ Sin calificar'}</div><p>${esc(b.notes||'')}</p>
-<div class="actions">${b.url?`<button onclick="window.open('${esc(b.url)}','_blank')">🔗 Leer</button>`:''}
-<button onclick="openForm(${b.id})">✏️ Editar</button><button onclick="del(${b.id})">🗑️</button></div></article>`}).join(''):'<div class="empty" style="grid-column:1/-1">Todavía no tienes lecturas aquí.<br>¡Agrega tu primer libro! 📚💗</div>';
+return `<article class="card" onclick="showDetails(${b.id})">
+<div class="cover">${b.cover?`<img src="${esc(b.cover)}" onerror="this.style.display='none'">`:'<span>📖</span>'}</div>
+<div class="card-stars">${b.rating&&b.rating!=='0'?b.rating:'☆'}</div>
+<div class="title">${esc(b.title)||'Sin título'}</div>
+<div class="meta author">${esc(b.author)||'Autor no indicado'}</div>
+<div class="progress"><div class="bar" style="width:${p}%"></div></div>
+<div class="card-progress-text">${b.read}/${b.total} capítulos · ${p}%</div>
+</article>`}).join(''):'<div class="empty" style="grid-column:1/-1">Todavía no tienes lecturas aquí.<br>¡Agrega tu primer libro! 📚💗</div>';
 }
 function del(id){if(confirm('¿Eliminar esta lectura?')){books=books.filter(b=>b.id!==id);saveData();render()}}
 function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 render();
 </script>
 </body></html>
+
